@@ -5,9 +5,9 @@ $username = "root";
 $password = "AdvancedDB";
 $dbname = "AdvancedDatabases";
 
-#$var = $_POST[''];
-#$var = $_POST[''];
-#$var = $_POST[''];
+$DeptNo = $_POST[''];
+$DNAME  = $_POST[''];
+$LocFk = $_POST[''];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 
-#$sql = $conn->prepare("INSERT INTO _____ (___,____,___) VALUES (?, ?, ?)");
+$sql = $conn->prepare("INSERT INTO DEPARTEMENT (DEPTNO,DNAME,LocFk) VALUES (?, ?, ?)");
 
 #$sql->bind_param("sss", $var, $var, $var);
 

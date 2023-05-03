@@ -16,6 +16,7 @@ cnx = mysql.connector.connect(
 
 # Insert a new row into a table
 cursor = cnx.cursor()
+
 #Create Location Table
 cursor.execute("CREATE TABLE LOCATION (LocationId INT NOT NULL, Location VARCHAR(50) NOT NULL,PRIMARY KEY (LocationId))")
 cursor.execute("CREATE TABLE JOB (JobId INT NOT NULL, JobTitle VARCHAR(50) NOT NULL, PRIMARY KEY (JobId))")
