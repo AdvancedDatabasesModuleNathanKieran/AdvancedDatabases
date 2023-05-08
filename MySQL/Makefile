@@ -13,7 +13,8 @@ build:
 start:
 	docker start $(CONTAINER_NAME)
 
-run:
+#FIrst Time Run
+init:
 	docker run --name $(CONTAINER_NAME) -p $(PORT_MAPPING) -e MYSQL_ROOT_PASSWORD=$(ROOT_PASSWORD) -d $(IMAGE_NAME)
 
 # Create the database
@@ -23,4 +24,7 @@ createdb:
 #Populate Database
 datapopulationscript:
 	docker exec -it $(CONTAINER_NAME) mysql -uroot -p$(ROOT_PASSWORD) -e "python Datapopulation.py"
-	
+
+destroy:
+	docker stop $(CONTAINER_NAME)
+	docker rm $(CONTAINER_NAME)
