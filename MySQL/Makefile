@@ -1,30 +1,16 @@
-# Define variables
-IMAGE_NAME = mysql-image
-CONTAINER_NAME = mysql-container
-PORT_MAPPING = 3306:3306
-ROOT_PASSWORD = AdvancedDB
-DB_NAME = AdvancedDatabases
+# Docker image name and tag
+IMAGE_NAME=my-mysql
+IMAGE_TAG=latest
 
-# Build the Docker image
+# Docker commands
 build:
-	docker build -t $(IMAGE_NAME) .
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
 
-# Start the Docker container
-start:
-	docker start $(CONTAINER_NAME)
+run:
+	docker run -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=12345 -p 3306:3306 -d mysql/mysql-server
 
-#FIrst Time Run
-init:
-	docker run --name $(CONTAINER_NAME) -p $(PORT_MAPPING) -e MYSQL_ROOT_PASSWORD=$(ROOT_PASSWORD) -d $(IMAGE_NAME)
 
-# Create the database
-createdb:
-	docker exec -it $(CONTAINER_NAME) mysql -uroot -p$(ROOT_PASSWORD) -e "CREATE DATABASE $(DB_NAME)"
-
-#Populate Database
-datapopulationscript:
-	docker exec -it $(CONTAINER_NAME) mysql -uroot -p$(ROOT_PASSWORD) -e "python Datapopulation.py"
-
-destroy:
-	docker stop $(CONTAINER_NAME)
-	docker rm $(CONTAINER_NAME)
+populate:
+	python3 Datapopulation
+stop:
+	docker stop my-mysql-container

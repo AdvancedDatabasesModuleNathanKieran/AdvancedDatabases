@@ -2,6 +2,3 @@ FROM mysql
 ENV MYSQL_ROOT_PASSWORD=AdvancedDB
 EXPOSE 3306
 CMD ["mysqld"]
-
-
-
