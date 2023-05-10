@@ -12,5 +12,6 @@ run:
 
 populate:
 	python3 Datapopulation
+	
 stop:
 	docker stop my-mysql-container
