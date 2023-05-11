@@ -12,7 +12,6 @@ password = "12345"
 database = "AdvancedDB"
 
 conv = conversions.copy()
-conv[FIELD_TYPE.DATE] = lambda x: datetime.datetime.strptime(x, '%Y-%m-%d').date()
 
 # Connect to the database
 cnx = pymysql.connect(
@@ -32,23 +31,14 @@ for row in DEPT:
     data = {
         "DeptNo": row[0],
         "DeptName": row[1],
-        "Location": row[4]
+        "Location": row[3]
     }
     data2 = dict(data)
     del data
     dept_list.append(data2)
 
-## Connect to mongoDB
-client = pymongo.MongoClient("mongodb://Nathan:Nathan@localhost:27017/")
-
-## Create DEPT 
-db = client["DEPT"]
-collection = db["DEPT"]
-
-result = collection.insert_many(dept_list)
-
-db = client["EMP"]
-collection = db["Employees"]
+with open("DEPT.json", "w") as write_file:
+    json.dump(dept_list, write_file, indent=4)
 
 cursor.execute("SELECT EMP.EmpId,EMP_DETAILS.Name,EMP_DETAILS.Birthday,EMP_DETAILS.Hiredate,EMP.MGR,EMP.Salary,EMP.Commission,DEPT.DeptNo,JOB.JobTitle FROM EMP JOIN EMP_DETAILS ON EMP.EmpId = EMP_DETAILS.EmpDetailsId JOIN JOB ON EMP.JobFk = JOB.JobId JOIN DEPT ON EMP.DeptFk = DEPT.DeptNo;")
 EMP = cursor.fetchall()
@@ -71,7 +61,23 @@ for row in EMP:
     del employee_dict
     EMP_LIST.append(data3)
 
-results = collection.insert_many(EMP_LIST)
+with open("EMP.json", "w") as fp:
+    json.dump(EMP_LIST,fp,indent=4) 
 
 
 
+
+
+## Connect to mongoDB
+client = pymongo.MongoClient("mongodb://Nathan:Nathan@localhost:27017/")
+
+## Create DEPT 
+db = client["DEPT"]
+collection = db["Departement"]
+
+
+#results = collection.insert_many(EMP_LIST)
+#result = collection.insert_many(dept_list)
+
+db = client["EMP"]
+collection = db["Employee"]

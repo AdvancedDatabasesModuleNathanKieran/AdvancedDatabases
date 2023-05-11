@@ -98,8 +98,7 @@ $cursor = $manager->executeQuery("$database.$collection", $query);
             <label class =label for="dept_fk">Department:</label>
               <select name="dept_fk" id="dept_fk">
                 <?php 
-                  $database = "DEPT";
-                  $collection = "DEPT";
+                  $collection = "Dept";
                   $filter = [];
                   $options = [];
                   

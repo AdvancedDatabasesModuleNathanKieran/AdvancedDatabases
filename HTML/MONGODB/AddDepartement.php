@@ -10,7 +10,7 @@ $document = array(
 
 $bulk->insert($document);
 
-$result = $manager->executeBulkWrite('DEPT.DEPT', $bulk);
+$result = $manager->executeBulkWrite('EMP.Dept', $bulk);
 
 
 if ($result->getInsertedCount() == 1) {

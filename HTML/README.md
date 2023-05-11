@@ -1,8 +1,11 @@
-sudo pecl channel-update pecl.php.net
-sudo pecl install mongodb
+## Running Client
 
-#sudo apt-get install php-mongodb
+Ensure both Databases are running.
 
-php -S localhost:8000
-
+```console
 sudo apt-get install php-mongodb
+```
+
+```console 
+php -S localhost:8000
+```
