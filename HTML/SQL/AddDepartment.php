@@ -6,7 +6,6 @@ $password = "12345";
 $port = "3306";
 $database = "AdvancedDB";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database, $port);
 
 if ($conn->connect_error) {
@@ -28,7 +27,6 @@ if (mysqli_num_rows($result) > 0) {
 
 $DeptNo = $highest + 10;
 
-// Retrieve form data
 $department = $_POST['Department'];
 $loc_fk = intval($_POST['loc_fk']);
 
@@ -44,6 +42,6 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-// Close the database connection
+
 $conn->close();
 ?>

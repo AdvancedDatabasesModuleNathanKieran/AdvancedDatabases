@@ -5,7 +5,6 @@ $password = "12345";
 $port = "3306";
 $database = "AdvancedDB";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database, $port);
 
 $sql = "SELECT EMP_DETAILS.EmpDetailsId, EMP_DETAILS.Name FROM EMP_DETAILS;;";

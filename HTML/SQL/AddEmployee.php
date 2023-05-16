@@ -1,4 +1,3 @@
-#! /usr/bin/php
 <?php
 
 $servername = "127.0.0.1";
@@ -7,7 +6,6 @@ $password = "12345";
 $port = "3306";
 $database = "AdvancedDB";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database, $port);
 
 if ($conn->connect_error) {
@@ -15,7 +13,6 @@ if ($conn->connect_error) {
 }
 
 
-// Retrieve form data
 $emp_id = intval($_POST['emp_id2']);
 $job_fk = intval($_POST['job_fk']);
 $mgr = intval($_POST['mgr']);

@@ -12,31 +12,20 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DEPT.DeptName, COUNT(DISTINCT EMP.MGR) AS num_managers 
-        FROM DEPT JOIN EMP ON DEPT.DeptNo = EMP.DeptFk 
-        GROUP BY DEPT.DeptNo HAVING num_managers > 1 
-        ORDER BY num_managers DESC";
+$sql = "SELECT DEPT.DeptName, COUNT(DISTINCT EMP.MGR) AS num_managers FROM DEPT 
+        JOIN EMP ON DEPT.DeptNo = EMP.DeptFk GROUP BY DEPT.DeptNo 
+        HAVING num_managers > 1 ORDER BY num_managers DESC;";
 
+$result = $conn->query($sql);
+echo "<table>";
+echo "<tr><th>Department</th><th>Managers</th></tr>";
 
-$result = mysqli_query($conn, $sql);
+while($row = $result->fetch_assoc()) {
+      echo "<tr>";
+      echo "<td>" . $row['DeptName'] . "</td>";
+      echo "<td>" . $row['num_managers'] . "</td>";
+      echo "</tr>";
+  }
 
-if (mysqli_query($conn, $sql)) {
-    echo "<table>";
-    echo "<tr><th>Department</th><th>Job Title</th><th>Average Salary</th></tr>";
-    
-    while ($row = mysqli_fetch_assoc($reult)) {
-        echo "<tr>";
-        echo "<td>" . $row['DeptName'] . "</td>";
-        echo "<td>" . $row['JobTitle'] . "</td>";
-        echo "<td>" . $row['avg_salary'] . "</td>";
-        echo "</tr>";
-    }
-
-
-    echo "</table>";
-    } else {
-    echo "Error: " . mysqli_error($connection);
-    }
-
-mysqli_close($connection);
+mysqli_close($conn);
 ?>

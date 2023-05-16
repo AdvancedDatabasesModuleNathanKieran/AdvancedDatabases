@@ -7,7 +7,6 @@ $collection = "Employees";
 $filter = [];
 $options = [];
 
-// create a query object and execute the query
 $query = new MongoDB\Driver\Query($filter, $options);
 $cursor = $manager->executeQuery("$database.$collection", $query);
 
@@ -101,8 +100,7 @@ $cursor = $manager->executeQuery("$database.$collection", $query);
                   $collection = "Dept";
                   $filter = [];
                   $options = [];
-                  
-                  // create a query object and execute the query
+
                   $query = new MongoDB\Driver\Query($filter, $options);
                   $cursor = $manager->executeQuery("$database.$collection", $query);
                   foreach ($cursor as $document) {
@@ -128,13 +126,16 @@ $cursor = $manager->executeQuery("$database.$collection", $query);
       <div class="column">
       <div class="card">
         <div class="card-content">
-        <div class="field">
-          <input class="button is-link is-light" type="submit" value="Query 1">
-        </div>
-        <div class="field">
-            <input class="button is-link is-light" type="submit" value="Query 2">
-        </div>
-        </div>
+        <form action="MONGODB/Query1.php", method = "post">
+          <div class="field">
+              <input class="button is-link is-light" type="submit" value="High Salary in Accounting and Sales">
+          </div>
+        </form>
+        <form action="MONGODB/Query2.php", method = "post">
+          <div class="field">
+              <input class="button is-link is-light" type="submit" value="Get Older Staff from Research">
+          </div>
+        </form>
       </div>
     </div>
 

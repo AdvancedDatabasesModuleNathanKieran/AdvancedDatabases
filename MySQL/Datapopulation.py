@@ -1,12 +1,11 @@
+#pip install mysql-connector-python
 import mysql.connector
 
-# Set up connection details
 host = "localhost"
 user = "root"
 password = "12345"
 database = "AdvancedDB"
 
-# Connect to the database
 cnx = mysql.connector.connect(
     host=host,
     user=user,
@@ -14,7 +13,6 @@ cnx = mysql.connector.connect(
     database=database
 )
 
-# Insert a new row into a table
 cursor = cnx.cursor()
 
 #Create Location Table
