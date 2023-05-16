@@ -69,15 +69,8 @@ with open("EMP.json", "w") as fp:
 
 
 ## Connect to mongoDB
-client = pymongo.MongoClient("mongodb://Nathan:Nathan@localhost:27017/")
-
-## Create DEPT 
-db = client["DEPT"]
-collection = db["Departement"]
-
-
-#results = collection.insert_many(EMP_LIST)
-#result = collection.insert_many(dept_list)
-
+client = pymongo.MongoClient("mongodb://EMP:EMP@localhost:27017/")
+## Create Database and Collections 
 db = client["EMP"]
-collection = db["Employee"]
+collection = db["Departement"]
+collection = db["Employees"]

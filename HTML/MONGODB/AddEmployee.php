@@ -1,5 +1,5 @@
 <?php
-$manager = new MongoDB\Driver\Manager("mongodb://Nathan:Nathan@localhost:27017");
+$manager = new MongoDB\Driver\Manager("mongodb://EMP:EMP@localhost:27017");
 $bulk = new MongoDB\Driver\BulkWrite;
 
 $filter = [];

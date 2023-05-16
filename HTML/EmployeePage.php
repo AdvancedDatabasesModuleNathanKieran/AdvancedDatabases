@@ -134,7 +134,6 @@ $result = $conn->query($sql);
             </div>
             <div class="field">
             <label class =label for="dept_fk">Department:</label>
-    
             <select name="loc_fk" id="loc_fk">
               <?php 
               $sql = "SELECT LocationId, Location FROM LOCATION;";
@@ -149,21 +148,27 @@ $result = $conn->query($sql);
             <div class="field">
               <input class="button is-link is-light" type="submit" value="Add Department">
             </div>
-        
+          </form>
         </div>
       </div>
       <div class="column">
       <div class="card">
         <div class="card-content">
-        <div class="field">
-          <input class="button is-link is-light" type="submit" value="Query 1">
-        </div>
-        <div class="field">
-            <input class="button is-link is-light" type="submit" value="Query 2">
-        </div>
-        <div class="field">
-            <input class="button is-link is-light" type="submit" value="Query 3">
-        </div>
+        <form action="SQL/SalariesQuery.php", method = "post">
+          <div class="field">
+            <input class="button is-link is-light" type="submit" value="Get Avg Salaries">
+          </div>
+        </form>
+        <form action="SQL/BirthdayQuries.php", method = "post">
+          <div class="field">
+              <input class="button is-link is-light" type="submit" value="Get Employee Birthdays">
+          </div>
+        </form>
+        <form action="SQL/ManagerQuries.php", method = "post">
+          <div class="field">
+              <input class="button is-link is-light" type="submit" value="Get Managers Per Departement">
+          </div>
+        </form>
         </div>
       </div>
     </div>
