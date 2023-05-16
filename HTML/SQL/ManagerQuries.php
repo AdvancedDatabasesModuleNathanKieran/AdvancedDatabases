@@ -12,9 +12,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DEPT.DeptName, COUNT(DISTINCT EMP.MGR) AS num_managers FROM DEPT 
-        JOIN EMP ON DEPT.DeptNo = EMP.DeptFk GROUP BY DEPT.DeptNo 
-        HAVING num_managers > 1 ORDER BY num_managers DESC;";
+$sql = "SELECT DEPT.DeptName, COUNT(DISTINCT EMP.JobFk) 
+        AS num_managers FROM DEPT 
+        JOIN EMP ON DEPT.DeptNo = EMP.DeptFk 
+        JOIN JOB ON JOB.JobId = EMP.JobFk 
+        WHERE JobTitle = 'MANAGER' 
+        GROUP BY DEPT.DeptNo, DEPT.DeptName 
+        HAVING num_managers < 2 
+        ORDER BY num_managers DESC;";
 
 $result = $conn->query($sql);
 echo "<table>";
