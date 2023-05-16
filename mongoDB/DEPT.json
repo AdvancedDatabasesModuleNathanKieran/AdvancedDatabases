@@ -1,0 +1,22 @@
+[
+    {
+        "DeptNo": 10,
+        "DeptName": "ACCOUNTING",
+        "Location": "NEW YORK"
+    },
+    {
+        "DeptNo": 20,
+        "DeptName": "RESEARCH",
+        "Location": "DALLAS"
+    },
+    {
+        "DeptNo": 30,
+        "DeptName": "SALES",
+        "Location": "CHICAGO"
+    },
+    {
+        "DeptNo": 40,
+        "DeptName": "OPERATIONS",
+        "Location": "BOSTON"
+    }
+]

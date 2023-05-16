@@ -7,14 +7,12 @@ $password = "12345";
 $port = "3306";
 $database = "AdvancedDB";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database, $port);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve form data
 $emp_id = $_POST['emp_id'];
 $emp_id = intval($emp_id);
 $name = $_POST['name'];
@@ -30,6 +28,5 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-// Close the database connection
 $conn->close();
 ?>

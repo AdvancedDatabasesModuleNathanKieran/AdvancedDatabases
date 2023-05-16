@@ -29,7 +29,6 @@ echo $emp_id;
 echo $job_fk;
 echo $salary;
 
-// Insert the data into the database
 $sql = "INSERT INTO EMP (EmpId, EmpDetailsFk, JobFk, MGR, Salary, Commission, DeptFk) 
            VALUES ($emp_id,$emp_id,$job_fk,$mgr,$salary,$commission,$dept_fk)";
 
@@ -40,7 +39,7 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-// Close the database connection
+
 mysqli_close($conn);
 
 ?>
